@@ -2,8 +2,14 @@ import RPi.GPIO as GPIO    # Import Raspberry Pi GPIO library
 from time import sleep     # Import the sleep from time module
 GPIO.setwarnings(False)    # Ignore warning for now
 GPIO.setmode(GPIO.BOARD)   # Use physical pin numbering
-
-ITER_COUNT = 15  
+import sys
+           
+        
+if '-n' in sys.argv:
+    ITER_COUNT = int(input("What would you like to set the iteration count to?"))
+else:
+    ITER_COUNT = 5
+    
 pin1 = 11
 
 GPIO.setup(pin1, GPIO.OUT, initial=GPIO.LOW)   
